@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>asset/chart.png</file>
+        <file>style/stylesheet.qss</file>
+    </qresource>
+</RCC>
