@@ -1,2 +1,4 @@
 chat/CMakeLists.txt.user
 /chat/build/
+/server/GateServer/build/
+/server/GateServer/.vscode/
