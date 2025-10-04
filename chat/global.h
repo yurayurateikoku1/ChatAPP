@@ -4,6 +4,11 @@
 #include <functional>
 #include "QStyle"
 #include <QByteArray>
+#include <QJsonObject>
+#include <QDir>
+#include <QFile>
+#include <QSettings>
+
 extern std::function<void(QWidget*)> repolish;
 
 enum ReqId{
@@ -20,4 +25,7 @@ enum ErrorCodes{
 enum Modules{
     REGISTERMOD = 0,
 };
+
+extern QString gate_url_prefix;
+
 #endif // GLOBAL_H

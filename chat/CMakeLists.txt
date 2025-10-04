@@ -33,6 +33,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
 
         httpmgr.h httpmgr.cpp
         singleton.h
+        config.ini
 
 
 
@@ -82,3 +83,4 @@ install(TARGETS chat
 if(QT_VERSION_MAJOR EQUAL 6)
     qt_finalize_executable(chat)
 endif()
+configure_file(config.ini ${CMAKE_CURRENT_BINARY_DIR}/config.ini COPYONLY)

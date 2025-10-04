@@ -1,0 +1,8 @@
+[requires]
+boost/1.88.0
+jsoncpp/1.9.6
+grpc/1.72.0
+
+[generators]
+CMakeDeps
+CMakeToolchain

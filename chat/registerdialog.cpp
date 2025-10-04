@@ -28,6 +28,9 @@ void RegisterDialog::on_pushButton_getCode_clicked()
     bool match = regex.match(email).hasMatch(); // 执行正则表达式匹配
     if(match){
         //发送http请求获取验证码
+        QJsonObject json_obj;
+        json_obj["email"]=email;
+        HttpMgr::GetInstance()->PostHttpReq(QUrl(gate_url_prefix+"/get_varifycode"),json_obj,ReqId::ID_GET_VARIFY_CODE,Modules::REGISTERMOD);
     }else{
         //提示邮箱不正确
         showTip(tr("Email Address Erro"),false);

@@ -12,9 +12,13 @@ private:
     void CheckDeadline();
     void WriteResponse();
     void HandleRequest();
+    void PreParseGetParam();
     boost::asio::ip::tcp::socket _socket;
     boost::beast::flat_buffer _buffer{8192};
     boost::beast::http::request<boost::beast::http::dynamic_body> _request;
     boost::beast::http::response<boost::beast::http::dynamic_body> _response;
     boost::asio::steady_timer _deadline{_socket.get_executor(), std::chrono::seconds(60)};
+
+    std::string _get_url;
+    std::unordered_map<std::string, std::string> _get_params;
 };
