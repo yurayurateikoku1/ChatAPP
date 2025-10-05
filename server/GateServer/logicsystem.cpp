@@ -1,5 +1,6 @@
 #include "logicsystem.h"
 #include "httpconnection.h"
+#include "varifygrpcclient.h"
 void LogicSystem::RegGet(std::string url, HttpHandler handler)
 {
     _get_handlers[url] = handler;
@@ -41,8 +42,10 @@ LogicSystem::LogicSystem()
                     boost::beast::ostream(conn->_response.body()) << root.toStyledString();
                     return true;
                 }
-                    auto email = src_root["email"].asString(); 
-                    root["error"] = Success;
+
+                    auto email = src_root["email"].asString();
+                    GetVarifyRsp rsp=VarifayGrpcClient::GetInstance()->GetVarifyCode(email); 
+                    root["error"] = rsp.error();
                     root["email"] =src_root["email"];
                      std::string jsonstr= root.toStyledString();
                      boost::beast::ostream(conn->_response.body()) << jsonstr;

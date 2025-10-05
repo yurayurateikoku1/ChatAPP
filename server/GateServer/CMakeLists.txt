@@ -12,13 +12,15 @@ find_package(grpc CONFIG REQUIRED)
 add_executable(${PROJECT_NAME}
     main.cpp
     singleton.h
-    common.h
+    common.h config.ini
+    configmgr.h configmgr.cpp
     httpconnection.h httpconnection.cpp
     logicsystem.h logicsystem.cpp
     cserver.h cserver.cpp
     message.grpc.pb.h message.grpc.pb.cc
     message.pb.h message.pb.cc
-    verifaygrpcclient.h verifaygrpcclient.cpp
+    varifygrpcclient.h varifygrpcclient.cpp
 )
 
-target_link_libraries(${PROJECT_NAME} PRIVATE Boost::headers Boost::boost JsonCpp::JsonCpp  gRPC::grpc++ gRPC::grpc)
+target_link_libraries(${PROJECT_NAME} PRIVATE Boost::headers Boost::boost Boost::filesystem Boost::system JsonCpp::JsonCpp  gRPC::grpc++ gRPC::grpc)
+configure_file(config.ini ${CMAKE_CURRENT_BINARY_DIR}/config.ini COPYONLY)

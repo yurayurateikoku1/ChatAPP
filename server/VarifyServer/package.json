@@ -1,0 +1,17 @@
+{
+  "name": "varifyserver",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "server": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@grpc/grpc-js": "^1.14.0",
+    "@grpc/proto-loader": "^0.8.0",
+    "nodemailer": "^7.0.6",
+    "uuid": "^13.0.0"
+  }
+}

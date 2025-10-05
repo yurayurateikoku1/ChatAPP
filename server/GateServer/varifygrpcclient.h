@@ -7,13 +7,12 @@ using grpc::Channel;
 using grpc::ClientContext;
 using grpc::Status;
 
-using message::;
 using message::GetVarifyReq;
 using message::GetVarifyRsp;
 using message::VarifyService;
-class VerifayGrpcClient : public Singleton<VerifayGrpcClient>
+class VarifayGrpcClient : public Singleton<VarifayGrpcClient>
 {
-    friend class Singleton<VerifayGrpcClient>;
+    friend class Singleton<VarifayGrpcClient>;
 
 public:
     GetVarifyRsp GetVarifyCode(const std::string &email)
@@ -23,7 +22,7 @@ public:
         GetVarifyReq request;
         request.set_email(email);
 
-        Status status_ = stub_->GetVarifyCode(&context, request, &reply);
+        Status status = stub_->GetVarifyCode(&context, request, &reply);
         if (status.ok())
         {
 
@@ -37,7 +36,7 @@ public:
     }
 
 private:
-    VerifyGrpcClient()
+    VarifayGrpcClient()
     {
         std::shared_ptr<Channel> channel = grpc::CreateChannel("127.0.0.1:50051", grpc::InsecureChannelCredentials());
         stub_ = VarifyService::NewStub(channel);
