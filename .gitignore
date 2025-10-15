@@ -1,5 +1,6 @@
 chat/CMakeLists.txt.user
 /chat/build/
+/docker_data/
 /server/GateServer/build/
 /server/GateServer/.vscode/
 /server/VarifyServer/node_modules/
