@@ -18,6 +18,3 @@ enum ErrorCodes
     Error_Json = 1001,
     RPCFailed = 1002,
 };
-
-class ConfigMgr;
-extern ConfigMgr gCfgMgr;

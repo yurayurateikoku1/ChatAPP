@@ -21,6 +21,7 @@ struct SectionInfo
         }
 
         this->_section_datas = src._section_datas;
+        return *this;
     }
 
     std::map<std::string, std::string> _section_datas;
@@ -39,9 +40,14 @@ class ConfigMgr
 {
 private:
     std::map<std::string, SectionInfo> _config_map;
+    ConfigMgr(/* args */);
 
 public:
-    ConfigMgr(/* args */);
+    static ConfigMgr &GetInstance()
+    {
+        static ConfigMgr instance;
+        return instance;
+    }
     ConfigMgr(const ConfigMgr &src)
     {
         _config_map = src._config_map;

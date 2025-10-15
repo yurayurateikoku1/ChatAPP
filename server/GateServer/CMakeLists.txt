@@ -20,6 +20,7 @@ add_executable(${PROJECT_NAME}
     message.grpc.pb.h message.grpc.pb.cc
     message.pb.h message.pb.cc
     varifygrpcclient.h varifygrpcclient.cpp
+    asioioservicepool.h asioioservicepool.cpp
 )
 
 target_link_libraries(${PROJECT_NAME} PRIVATE Boost::headers Boost::boost Boost::filesystem Boost::system JsonCpp::JsonCpp  gRPC::grpc++ gRPC::grpc)

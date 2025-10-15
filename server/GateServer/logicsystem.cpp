@@ -44,7 +44,7 @@ LogicSystem::LogicSystem()
                 }
 
                     auto email = src_root["email"].asString();
-                    GetVarifyRsp rsp=VarifayGrpcClient::GetInstance()->GetVarifyCode(email); 
+                    GetVarifyRsp rsp=VarifyGrpcClient::GetInstance()->GetVarifyCode(email); 
                     root["error"] = rsp.error();
                     root["email"] =src_root["email"];
                      std::string jsonstr= root.toStyledString();
