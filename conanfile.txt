@@ -1,7 +1,9 @@
 [requires]
 boost/1.88.0
 jsoncpp/1.9.6
-grpc/1.72.0
+grpc/1.50.0
+hiredis/1.3.0
+mysql-connector-cpp/9.2.0
 
 [generators]
 CMakeDeps

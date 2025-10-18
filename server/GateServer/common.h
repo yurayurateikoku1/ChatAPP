@@ -10,11 +10,22 @@
 #include <json/reader.h>
 #include <memory>
 #include <iostream>
+#include <queue>
 #include <map>
 #include <string>
+#include <hiredis/hiredis.h>
 enum ErrorCodes
 {
     Success = 0,
     Error_Json = 1001,
     RPCFailed = 1002,
+    VarifyExpired = 1003,
+    VarifyCodeErr = 1004,
+    UserExist = 1005,
+    PasswdErr = 1006,
+    EmailNotMatch = 1007,
+    PasswdUpFailed = 1008,
+    PasswdInValid = 1009
 };
+
+#define CODEPREFIX "code_"

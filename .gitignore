@@ -4,3 +4,4 @@ chat/CMakeLists.txt.user
 /server/GateServer/build/
 /server/GateServer/.vscode/
 /server/VarifyServer/node_modules/
+/conan_cmake_deps/

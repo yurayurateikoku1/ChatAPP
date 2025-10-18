@@ -88,5 +88,54 @@ void RegisterDialog::initHttpHandlers()
         showTip(tr("验证码已发送到邮箱，注意查收"), true);
         qDebug()<< "email is " << email ;
     });
+
+    _handlers.insert(ReqId::ID_REG_USER,[this](QJsonObject jsonObj){
+        int error=jsonObj["error"].toInt();
+        if(error!=ErrorCodes::SUCCESS){
+            showTip(tr("参数错误"),false);
+            return;
+        }
+        auto email=jsonObj["email"].toString();
+        showTip(("注册成功"),true);
+        qDebug()<< "email is " << email ;
+    });
+}
+
+
+
+
+
+void RegisterDialog::on_pushButton_confirm_clicked()
+{
+    if(ui->lineEdit_User->text()==""){
+        showTip(tr("Username cannot null"),false);
+        return;
+    }
+    if(ui->lineEdit_email->text()==""){
+        showTip(tr("Email cannot null"),false);
+        return;
+    }
+    if(ui->lineEdit_Password->text()==""){
+        showTip(tr("Password cannot null"),false);
+        return;
+    }
+    if(ui->lineEdit_Confirm->text()==""){
+        showTip(tr("Confirm Password cannot null"),false);
+        return;
+    }
+    if(ui->lineEdit_varifycode->text()==""){
+        showTip(tr("Varifycode cannot null"),false);
+        return;
+    }
+
+    QJsonObject jsonObj;
+    jsonObj["user"]=ui->lineEdit_User->text();
+    jsonObj["email"]=ui->lineEdit_email->text();
+    jsonObj["passwd"]=ui->lineEdit_Password->text();
+    jsonObj["confirm"]=ui->lineEdit_Confirm->text();
+    jsonObj["varifycode"]=ui->lineEdit_varifycode->text();
+
+    HttpMgr::GetInstance()->PostHttpReq(QUrl(gate_url_prefix+"/user_register"),jsonObj,ReqId::ID_REG_USER,Modules::REGISTERMOD);
+
 }
 
