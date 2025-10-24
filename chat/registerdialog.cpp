@@ -97,7 +97,7 @@ void RegisterDialog::initHttpHandlers()
         }
         auto email=jsonObj["email"].toString();
         showTip(("注册成功"),true);
-        qDebug()<<"uid is "<<jsonObj["uuid"].toString();
+        qDebug()<<"uid is "<<jsonObj["uid"].toString();
         qDebug()<< "email is " << email ;
     });
 }
